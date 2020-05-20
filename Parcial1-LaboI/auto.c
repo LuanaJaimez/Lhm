@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <conio.h>
+#include <ctype.h>
 #include "utn.h"
 #include "auto.h"
 
@@ -69,7 +71,7 @@ int altaAuto(int idx, eAuto vec[], int tam, eMarca marca[], int tamM, eColor col
         vec[indice] = auxAuto;
         todoOk = 1;
 
-        printf("Alta excitosa\n");
+        printf("\n*Alta excitosa*\n\n");
 
     }
 
@@ -160,11 +162,13 @@ void modificarAuto(eAuto vec[], int tam, eMarca marcas[], int tamM, eColor color
         switch(menuModificar())
         {
         case 1:
-            printf("\nModifica Color?: ");
+            printf("\nModifica Color? (s/n): ");
             fflush(stdin);
             scanf("%c", &confirma);
             if(confirma == 's')
             {
+                printf("\n");
+                mostrarColores(colores, tamC);
                 printf("Ingrese nuevo color: ");
                 scanf("%d", &nuevoColor);
 
@@ -177,7 +181,7 @@ void modificarAuto(eAuto vec[], int tam, eMarca marcas[], int tamM, eColor color
             }
             break;
         case 2:
-            printf("\nModifica Modelo?: ");
+            printf("\nModifica Modelo? (s/n): ");
             fflush(stdin);
             scanf("%c", &confirma);
             if(confirma == 's')
@@ -194,7 +198,7 @@ void modificarAuto(eAuto vec[], int tam, eMarca marcas[], int tamM, eColor color
             }
             break;
         case 3:
-            printf("Confirme salida: ");
+            printf("Confirme salida (s/n): ");
             fflush(stdin);
             scanf("%c", &confirma);
             if(confirma == 's')
@@ -285,7 +289,7 @@ void bajaAuto(eAuto vec[], int tam, eMarca marcas[], int tamM, eColor colores[],
     {
         mostrarAuto(vec[indice], marcas, tamM, colores, tamC);
 
-        printf("\nConfirma baja?: ");
+        printf("\nConfirma baja? (s/n): ");
         fflush(stdin);
         scanf("%c", &confirma);
         if(confirma == 's')
@@ -325,8 +329,6 @@ int altaTrabajo(int idx, eTrabajo vec[], int tam, eServicio lavados[], int tamSe
     int todoOk = 0;
     int indiceT = buscarLibre(autos, tamAu);
     eTrabajo auxTrabajo;
-    //eServicio auxServ;
-    //char patente[20];
     int indice;
     char confirma;
 
@@ -334,12 +336,7 @@ int altaTrabajo(int idx, eTrabajo vec[], int tam, eServicio lavados[], int tamSe
 
     printf("***** Alta Trabajo *****\n\n");
 
-    if(indiceT == -1)
-    {
-        printf("***No hay autos para dar de alta un trabajo***\n\n");
-    }
-    else
-    {
+
     auxTrabajo.id = idx;
 
     mostrarAutos(autos, tamAu, marca, tamM, color, tamC);
@@ -348,14 +345,11 @@ int altaTrabajo(int idx, eTrabajo vec[], int tam, eServicio lavados[], int tamSe
     fflush(stdin);
     scanf("%s", auxTrabajo.patente);
 
-    /*printf("Ingrese patente: ");
-    scanf("%s", patente);*/
-
     indice = buscarAuto(auxTrabajo.patente, autos, tamAu);
 
     if(indice == -1)
     {
-        printf("No hay registro de un auto con la patente: %d\n", auxTrabajo.patente);
+        printf("No hay registro de un auto con esa patente\n");
     }
     else
     {
@@ -374,7 +368,7 @@ int altaTrabajo(int idx, eTrabajo vec[], int tam, eServicio lavados[], int tamSe
     fflush(stdin);
     scanf("%d/%d/%d", &auxTrabajo.fecha.dia, &auxTrabajo.fecha.mes, &auxTrabajo.fecha.anio);
 
-    printf("\nConfirma trabajo?: ");
+    printf("\nConfirma trabajo? (s/n): ");
     fflush(stdin);
     scanf("%c", &confirma);
     if(confirma == 's')
@@ -384,14 +378,13 @@ int altaTrabajo(int idx, eTrabajo vec[], int tam, eServicio lavados[], int tamSe
         vec[indiceT] = auxTrabajo;
         todoOk = 1;
 
-        printf("Alta excitosa\n");
+        printf("\n*Alta excitosa*\n\n");
     }
     else
     {
         printf("Se ha cancelado la operacion\n\n");
     }
 
-    }
     }
 
     return todoOk;
