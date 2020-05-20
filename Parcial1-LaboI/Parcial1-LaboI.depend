@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1589368979 source:c:\users\luana\desktop\workspace\parcial1-laboi\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"utn.h"
+
+1589368980 c:\users\luana\desktop\workspace\parcial1-laboi\utn.h
+
+1589940996 source:c:\users\luana\desktop\workspace\parcial1-laboi\auto.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"auto.h"
+
+1589939295 c:\users\luana\desktop\workspace\parcial1-laboi\auto.h
+
+1589936986 source:c:\users\luana\desktop\workspace\parcial1-laboi\main.c
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"auto.h"
+
